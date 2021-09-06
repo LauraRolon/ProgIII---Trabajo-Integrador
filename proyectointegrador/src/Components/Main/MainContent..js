@@ -8,7 +8,14 @@ function MainContent() {
   <Tarjetas />
   <Tarjetas />
   <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
 
   </div> 
   );
   }
+
+  export default MainContent;
