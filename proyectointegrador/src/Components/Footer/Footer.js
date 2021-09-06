@@ -5,8 +5,8 @@ function Footer(){
     return(
         <footer className="footer">
             <ul className="team">
-                <li className="nombres">María Paula Herrera</li>
-                <li className="nombres">María Laula Rolón Martínez</li>
+                <a className="nombres">© María Paula Herrera</a>
+                <a className="nombres">© María Laula Rolón Martínez</a>
             </ul>
         </footer>
     )

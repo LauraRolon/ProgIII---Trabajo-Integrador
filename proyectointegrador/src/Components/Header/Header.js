@@ -1,15 +1,16 @@
 import React from "react";
+//import './header.css'
 
 function Header(){
     return(
-        <header>
-            <section>
-                <p>Ordenar ASC/ DESC</p>
-                <i class="fas fa-th"></i>
-                <i class="fas fa-align-justify"></i>
+        <header className="header">
+            <section className="seccionHeader">
+                <img className="logo" src="./assets/img/image-default.png" alt=""></img> 
                 <form action="">
-                    <input type="text" name="search" id="" placeholder="Search"></input>
-                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <div class="divInput">
+                        <input class="inputBuscador" type="text" name="busqueda" placeholder="Buscar..." />
+                    </div>
+                    <button class="botonSearch" type="submit"><span id="lupa" href="" uk-icon="search"></span></button>
                 </form>
             </section>
         </header>
