@@ -6,13 +6,7 @@ function MainContent() {
   <div> 
   
   <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
+  
 
   </div> 
   );
