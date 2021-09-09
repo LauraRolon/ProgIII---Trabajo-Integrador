@@ -1,0 +1,61 @@
+.header{
+    background-color: #7884a4;
+    margin-bottom: 30px;
+    width: 100%;
+    z-index: 1000;
+    background-attachment: fixed;
+}
+
+.seccionHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.logotipo{
+    margin: 20px;
+    list-style: none;
+}
+
+.logo{
+    height: 60px;
+    width: 100px;
+    border-radius: 2px;
+}
+
+.divInput{
+    display: flex;
+    margin: 20px;
+    gap: 10px;
+}
+
+.inputBuscador{
+    width: 300px;
+    height: 25px;
+    border-radius: 2px;
+    border-style: none;
+}
+
+.botonSearch{
+    width: 50px;
+    height: 25px;
+    border-style: none;
+    border-radius: 2px;
+}
+
+.textoHeader{
+    color: white;
+    font-family: verdana;
+    font-size: 15px;
+}
+
+.titulosHeader{
+    list-style: none;
+}
+
+::placeholder{
+    color: black;
+    font-family: verdana;
+    font-size: 13px;
+}
