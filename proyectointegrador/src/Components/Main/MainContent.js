@@ -3,9 +3,10 @@ import Tarjetas from './Tarjetas/Tarjetas';
 
 function MainContent() {
     return (
-  <div> 
+  <div className="containerMain"> 
   
   <Tarjetas />
+  
   
 
   </div> 

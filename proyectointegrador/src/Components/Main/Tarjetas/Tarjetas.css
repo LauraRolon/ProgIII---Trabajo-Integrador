@@ -1,21 +1,73 @@
 .container {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .tarjeta {
     width: 371px;
-    height: 481px;
+    height: 800px;
     margin: 10px;
     background: #c7c7c7;
     border-radius: 27px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 
 .imagen {
     background-color: black;
+}
+
+.description {
+padding: 15px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+color: #000000;
+}
+
+.tarjeta-info1{
+    padding: 15px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+color: #000000;
+}
+
+.tarjeta-info2{
+    padding: 15px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+color: #000000;
+}
+
+.tarjeta-info3{
+    padding: 15px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+color: #000000;
+}
+
+.boton {
+    background-color: rgb(24, 24, 24);
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    text-align: center;
+    margin: 20px 50px;
+    border-radius: 27px;
 }
 
 
