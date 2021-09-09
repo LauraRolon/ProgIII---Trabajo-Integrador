@@ -1,5 +1,6 @@
 import React from 'react'
 import Tarjetas from './Tarjetas/Tarjetas';
+import '../Main/MainContent.css';
 
 function MainContent() {
     return (
@@ -7,6 +8,13 @@ function MainContent() {
   
   <Tarjetas />
   <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
+  <Tarjetas />
+  
   
   
 
