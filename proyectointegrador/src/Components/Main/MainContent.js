@@ -6,6 +6,7 @@ function MainContent() {
   <div className="containerMain"> 
   
   <Tarjetas />
+  <Tarjetas />
   
   
 
