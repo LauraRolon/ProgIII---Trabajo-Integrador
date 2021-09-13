@@ -6,7 +6,7 @@
 
 .tarjeta {
     flex-basis: 20%;
-    height: 550px;
+    height: 620px;
     margin: 10px;
     background: #c7c7c7;
     border-radius: 27px;
@@ -55,7 +55,17 @@ color: #000000;
     display: block;
     text-align: center;
     margin: 15px 50px;
-    border-radius: 27px;
+    border-radius: 20px;
+    text-decoration: none;
+    width: 35px;
+    height: 20px;
+
+}
+
+.botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 

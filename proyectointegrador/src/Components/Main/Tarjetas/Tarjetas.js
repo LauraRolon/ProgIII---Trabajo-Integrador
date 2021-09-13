@@ -1,27 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Tarjetas.css';
+import Pelicula from '../../Pelicula/Pelicula';
 
-function Tarjetas() {
-    return (
-            <main className="tarjeta">
-                <section class="navigation">
-                    <div>
-                        <i class="fas fa-chevron-left"></i>
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <i class="far fa-window-close"></i>
-                </section>
-                <img className="imagen" src="./assets/img/image-default.png" alt="" />
-                <h3 className="titulo">Título/ Nombre</h3>
-                <p className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.Sint cumque velit minus facere laboriosam voluptatem impedit ea unde labore optio eius quis, dignissimos expedita.Culpa, soluta perspiciatis!Sint, laboriosam cum.</p>
-                <section className="aditional-info">
-                    <p className="tarjeta-info">Lorem ipsum dolor sit amet consectetur adipisicing elit.Esse qui atque.</p>
-                    <p className="tarjeta-info">Lorem ipsum dolor sit amet consectetur adipisicing elit.Esse qui atque.</p>
-                    <p className="tarjeta-info">Lorem ipsum dolor sit amet consectetur adipisicing elit.Esse qui atque.</p>
-                </section>
-                <a class="boton" href="">Ver más</a>
-            </main>             
-    );
+class Tarjetas extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            peliculas: [],
+            imagen: [],
+            titulo: [],
+            description: [],
+            datos: ""
+        }
+    }
+
+    componentDidMount() {
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c3dcc0e9ef8f3864ee4f5ed844d151f8&language=es-US`
+        fetch(url)
+        .then(response => response.json())
+        .then( (data) => {
+            console.log(data);
+            this.setState({ peliculas: data.results })
+        })
+        .catch(error => console.log(error))
+    }
+
+
+    eliminarTarjeta(evt){
+        alert("Clickeaste en" + evt.target.textContent)
+    }
+
+    render(){
+        console.log("renderizado");
+        console.log(this.state.peliculas)
+        return (
+            <> 
+             { this.state.peliculas.map( (pelicula) => (
+                <Pelicula key={pelicula.id} datosPelicula={pelicula} />
+             ))}
+            </>
+        );
+    }
+    
 }
 
 export default Tarjetas;

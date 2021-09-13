@@ -6,16 +6,7 @@ function MainContent() {
     return (
   <div className="containerMain"> 
   
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  <Tarjetas />
-  
-  
+  <Tarjetas />    
   
 
   </div> 
