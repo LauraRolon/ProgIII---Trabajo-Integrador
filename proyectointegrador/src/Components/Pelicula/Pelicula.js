@@ -13,8 +13,14 @@ function Pelicula (props){
                     <i class="far fa-window-close"></i>
                 </section>
                 <img className="imagen" src={`https://image.tmdb.org/t/p/w342/${backdrop_path}`} alt="" />
-                <h3 className="titulo">{title}</h3>
-                <p className="description">{overview}</p>
+                <div className="title">
+                    <h3 className="titulo">{title}</h3>
+                </div>
+                
+                <div className="overview">
+                    <p className="description">{overview}</p>
+                </div>
+                
                 <section className="aditional-info">
                     <p className="tarjeta-info">Fecha de lanzamiento: {release_date}</p>
                     <p className="tarjeta-info">Título original: {original_title}</p>

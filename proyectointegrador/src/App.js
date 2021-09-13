@@ -1,26 +1,38 @@
 import Header from "./Components/Header/Header"
 import Footer from "./Components/Footer/Footer";
 import MainContent from "./Components/Main/MainContent";
-import { Component } from "react";
+import React, { Component } from "react";
 
-class App extends Component() {
+class App extends Component{
   constructor(props){
     super(props)
     this.state = {
-      valor: ""
+      mostrarFiltro: false
+    }
+  }
+
+  activarFiltro(){
+    if(this.state.mostrarFiltro === false){
+      this.setState({
+        mostrarFiltro: true
+      })
+    } else{
+      this.setState({
+        mostrarFiltro: false
+      })
     }
   }
 
   render(){
-    return (
+    return(
       <div className="App">
-      
-        <MainContent />
-        <Footer />
-      </div>
-  );
+      <Header mostrarFiltro= {this.state.mostrarFiltro} activarFiltro= {() => this.activarFiltro()} />
+      <MainContent activarFiltro= {this.state.activarFiltro} />
+      <Footer />
+    </div>
+    )
   }
-  
 }
 
-export default App;
+
+export default App
