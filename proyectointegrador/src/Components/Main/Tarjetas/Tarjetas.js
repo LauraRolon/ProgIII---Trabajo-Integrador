@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Tarjetas.css';
 import Pelicula from '../../Pelicula/Pelicula';
+import FilterField from '../../FilterField/FilterField';
 
 class Tarjetas extends Component {
     constructor(props){
@@ -10,7 +11,7 @@ class Tarjetas extends Component {
             imagen: [],
             titulo: [],
             description: [],
-            datos: ""
+            loader: false
         }
     }
 
@@ -20,7 +21,10 @@ class Tarjetas extends Component {
         .then(response => response.json())
         .then( (data) => {
             console.log(data);
-            this.setState({ peliculasOriginales: data.results })
+            this.setState({
+                loader: true,
+                peliculasOriginales: data.results,
+            })
         })
         .catch(error => console.log(error))
     }
@@ -34,13 +38,46 @@ class Tarjetas extends Component {
         })
     }
 
+    filtrarPeliculas(textoFiltrar){
+        let peliculasFiltradas = this.state.peliculasOriginales.filter( pelicula => 
+            pelicula.title.toLowerCase().includes(textoFiltrar.toLowerCase())
+        );
+        this.setState({ 
+            peliculasOriginales: peliculasFiltradas
+        })
+
+    }
+
     render(){
         console.log("renderizado");
         console.log(this.state.peliculasOriginales)
         return (
             <> 
-            
-            { this.state.peliculasOriginales.map( (pelicula) => (
+                <header className="header">
+                    <section className="seccionHeader">
+                        <li className="logotipo">
+                            <img className="logo" src="./assets/img/image-default.png" alt="" />
+                        </li>
+                        <li className="titulosHeader">
+                            <a className="textoHeader">Inicio</a>
+                        </li>
+                        <li className="titulosHeader">
+                            <a className="textoHeader">Películas</a>
+                        </li>
+                        <li className="titulosHeader">
+                            <a className="textoHeader">Series</a>
+                        </li>
+                        <li className="titulosHeader">
+                            <FilterField buscarPelicula={(param) => this.filtrarPeliculas(param)} />
+                        </li>
+                    </section>
+                </header>
+
+            {
+                this.state.loader === false ?
+                    <p>Cargando...</p> : 
+                
+                    this.state.peliculasOriginales.map( (pelicula) => (
                 <Pelicula 
                     key={pelicula.id} 
                     datosPelicula={pelicula} 

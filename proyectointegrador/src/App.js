@@ -5,7 +5,7 @@ import MainContent from "./Components/Main/MainContent";
 function App() {
   return (
     <div className="App">
-      <Header />
+      
       <MainContent />
       <Footer />
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import FilterField from "../FilterField/FilterField";
 import './header.css'
 
 function Header(){
@@ -18,12 +19,7 @@ function Header(){
                     <a className="textoHeader">Series</a>
                 </li>
                 <li className="titulosHeader">
-                    <form action="">
-                        <div className="divInput">
-                            <input className="inputBuscador" type="text" name="busqueda" placeholder="Buscar..." />
-                            <button className="botonSearch" type="submit"></button>
-                        </div>
-                    </form>
+                    <FilterField buscarPelicula={(param) => this.filtrarPeliculas(param)} />
                 </li>
             </section>
         </header>
