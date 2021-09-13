@@ -63,25 +63,6 @@ class Tarjetas extends Component {
         console.log(this.state.peliculasOriginales)
         return (
             <> 
-                <header className="header">
-                    <section className="seccionHeader">
-                        <li className="logotipo">
-                            <img className="logo" src="./assets/img/image-default.png" alt="" />
-                        </li>
-                        <li className="titulosHeader">
-                            <a className="textoHeader">Inicio</a>
-                        </li>
-                        <li className="titulosHeader">
-                            <a className="textoHeader">Películas</a>
-                        </li>
-                        <li className="titulosHeader">
-                            <a className="textoHeader">Series</a>
-                        </li>
-                        <li className="titulosHeader">
-                            <FilterField buscarPelicula={(param) => this.filtrarPeliculas(param)} />
-                        </li>
-                    </section>
-                </header>
 
             {
                 this.state.loader === false ?
@@ -92,14 +73,13 @@ class Tarjetas extends Component {
                     key={pelicula.id} 
                     datosPelicula={pelicula} 
                     eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}/> 
-            ))}
+                ))
+            }
+            
             
             <button>Agregar más tarjetas</button>
             <button>Reset</button>
-            <button onClick={()=>this.verMas()} >Ver mas</button>
-
-
-
+            
             </>
         );
     }
