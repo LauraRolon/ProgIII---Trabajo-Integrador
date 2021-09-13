@@ -48,6 +48,16 @@ class Tarjetas extends Component {
 
     }
 
+    verMas(){
+        if (this.state.verMas){
+            alert('ver mas')
+        }
+    }
+
+    agregarTarjeta(){
+
+    }
+
     render(){
         console.log("renderizado");
         console.log(this.state.peliculasOriginales)
@@ -86,6 +96,9 @@ class Tarjetas extends Component {
             
             <button>Agregar más tarjetas</button>
             <button>Reset</button>
+            <button onClick={()=>this.verMas()} >Ver mas</button>
+
+
 
             </>
         );
