@@ -11,7 +11,8 @@ class Tarjetas extends Component {
             imagen: [],
             titulo: [],
             description: [],
-            loader: false
+            loader: false,
+            verMas: false
         }
     }
 
@@ -50,7 +51,16 @@ class Tarjetas extends Component {
 
     verMas(){
         if (this.state.verMas){
-            alert('ver mas')
+            this.setState({
+                verMas: false
+            })
+        
+            
+        }
+        else {
+            this.setState({
+                verMas: true
+            })
         }
     }
 
@@ -72,7 +82,9 @@ class Tarjetas extends Component {
                 <Pelicula 
                     key={pelicula.id} 
                     datosPelicula={pelicula} 
-                    eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}/> 
+                    eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
+                    verMas={(e) => this.verMas(e)}
+                    /> 
                 ))
             }
             

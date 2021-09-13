@@ -21,13 +21,13 @@ function Pelicula (props){
                     <p className="description">{overview}</p>
                 </div>
                 
-                <section className="aditional-info">
+                <section className={this.state.verMas?'':'aditional-info'}>
                     <p className="tarjeta-info">Fecha de lanzamiento: {release_date}</p>
                     <p className="tarjeta-info">Título original: {original_title}</p>
                     <p className="tarjeta-info">Popularidad: {popularity}</p>
                 </section>
                 <section className="botones">
-                    <a className="boton" href="">Ver más</a>
+                    <a className="boton" onClick={(e)=> props.verMas(e)} href="">Ver más</a>
                     <a className="boton" onClick={() => props.eliminar(id)}> Eliminar </a>
                 </section>
 
