@@ -6,7 +6,7 @@ class Tarjetas extends Component {
     constructor(props){
         super(props);
         this.state = {
-            peliculas: [],
+            peliculasOriginales: [],
             imagen: [],
             titulo: [],
             description: [],
@@ -20,24 +20,36 @@ class Tarjetas extends Component {
         .then(response => response.json())
         .then( (data) => {
             console.log(data);
-            this.setState({ peliculas: data.results })
+            this.setState({ peliculasOriginales: data.results })
         })
         .catch(error => console.log(error))
     }
 
 
-    eliminarTarjeta(evt){
-        alert("Clickeaste en" + evt.target.textContent)
+    eliminarTarjeta(id){
+        console.log(id);
+        const restoPeliculas = this.state.peliculasOriginales.filter( pelicula => pelicula.id != id)
+        this.setState({
+            peliculasOriginales : restoPeliculas
+        })
     }
 
     render(){
         console.log("renderizado");
-        console.log(this.state.peliculas)
+        console.log(this.state.peliculasOriginales)
         return (
             <> 
-             { this.state.peliculas.map( (pelicula) => (
-                <Pelicula key={pelicula.id} datosPelicula={pelicula} />
-             ))}
+            
+            { this.state.peliculasOriginales.map( (pelicula) => (
+                <Pelicula 
+                    key={pelicula.id} 
+                    datosPelicula={pelicula} 
+                    eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}/> 
+            ))}
+            
+            <button>Agregar más tarjetas</button>
+            <button>Reset</button>
+
             </>
         );
     }

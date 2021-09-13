@@ -1,7 +1,7 @@
 import React from "react";
 
 function Pelicula (props){
-    const {title, overview, release_date, original_title, popularity} = props.datosPelicula
+    const {title, overview, release_date, original_title, popularity, id} = props.datosPelicula
     return(
         <>
             <main className="tarjeta">
@@ -22,7 +22,7 @@ function Pelicula (props){
                 </section>
                 <section className="botones">
                     <a className="boton" href="">Ver más</a>
-                    <a className="boton" href="" onClick={(evt) => this.eliminarTarjeta(evt)}> Eliminar </a>
+                    <a className="boton" onClick={() => props.eliminar(id)}> Eliminar </a>
                 </section>
 
             </main>
