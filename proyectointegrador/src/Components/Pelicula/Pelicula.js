@@ -21,7 +21,7 @@ function Pelicula (props){
                     <p className="description">{overview}</p>
                 </div>
                 
-                <section className={this.state.verMas?'':'aditional-info'}>
+                <section className={props.viewMore?'':'aditional-info'}>
                     <p className="tarjeta-info">Fecha de lanzamiento: {release_date}</p>
                     <p className="tarjeta-info">Título original: {original_title}</p>
                     <p className="tarjeta-info">Popularidad: {popularity}</p>

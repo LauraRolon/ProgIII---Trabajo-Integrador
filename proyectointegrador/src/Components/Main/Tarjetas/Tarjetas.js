@@ -12,7 +12,10 @@ class Tarjetas extends Component {
             titulo: [],
             description: [],
             loader: false,
-            verMas: false
+            verMas: false,
+            peliculas: [],
+            page: 1
+            
         }
     }
 
@@ -25,6 +28,7 @@ class Tarjetas extends Component {
             this.setState({
                 loader: true,
                 peliculasOriginales: data.results,
+                
             })
         })
         .catch(error => console.log(error))
@@ -49,7 +53,8 @@ class Tarjetas extends Component {
 
     }
 
-    verMas(){
+    verMas(e){
+        e.preventDefault()
         if (this.state.verMas){
             this.setState({
                 verMas: false
@@ -64,8 +69,17 @@ class Tarjetas extends Component {
         }
     }
 
-    agregarTarjeta(){
-
+    cargarMas(){
+        const url = this.state.nexturl;
+        fetch(url)
+            .then( response => response.json())
+            .then( data  => {
+                this.setState({
+                    peliculas: this.state.peliculas.concat(data.results),
+                    page: this.state.page + 1
+                })
+            })
+            .catch( err => console.log(err));
     }
 
     render(){
@@ -83,14 +97,15 @@ class Tarjetas extends Component {
                     key={pelicula.id} 
                     datosPelicula={pelicula} 
                     eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
+                    viewMore={this.state.verMas}
                     verMas={(e) => this.verMas(e)}
                     /> 
                 ))
             }
             
             
-            <button>Agregar más tarjetas</button>
-            <button>Reset</button>
+            <button>Ver más películas</button>
+            <button onClick={()=>this.cargarMas()}>Reset</button>
             
             </>
         );
