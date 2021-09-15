@@ -1,14 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Tarjetas from './Tarjetas/Tarjetas';
 import '../Main/MainContent.css';
-import Loader from '../Loader/Loader';
 
 function MainContent() {
     
   return (
     <div className="containerMain">
-      
-      <Loader />
+      <Tarjetas />
 
     </div>
   );
