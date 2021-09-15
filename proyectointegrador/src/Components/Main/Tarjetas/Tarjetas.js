@@ -107,9 +107,7 @@ class Tarjetas extends Component {
                     </section>
                 </header>
 
-            {   
-
-                
+            {     
                 this.state.loader === false ?
                     <p>Cargando...</p> : 
                 
