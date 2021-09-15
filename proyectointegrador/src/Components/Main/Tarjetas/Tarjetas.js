@@ -14,7 +14,7 @@ class Tarjetas extends Component {
             loader: false,
             verMas: false,
             peliculas: [],
-            page: 1
+           
             
         }
     }
@@ -28,6 +28,7 @@ class Tarjetas extends Component {
             this.setState({
                 loader: true,
                 peliculasOriginales: data.results,
+                
                 
             })
         })
@@ -70,13 +71,13 @@ class Tarjetas extends Component {
     }
 
     cargarMas(){
-        const url = this.state.nexturl;
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c3dcc0e9ef8f3864ee4f5ed844d151f8&language=es-US`
         fetch(url)
             .then( response => response.json())
             .then( data  => {
                 this.setState({
-                    peliculas: this.state.peliculas.concat(data.results),
-                    page: this.state.page + 1
+                    peliculas: this.state.peliculasOriginales.concat(data.results),
+                    
                 })
             })
             .catch( err => console.log(err));
@@ -99,12 +100,13 @@ class Tarjetas extends Component {
                     eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
                     viewMore={this.state.verMas}
                     verMas={(e) => this.verMas(e)}
+
                     /> 
                 ))
             }
             
             
-            <button>Ver más películas</button>
+            <button onClick={()=>this.cargarMas()}>Ver más películas</button>
             <button onClick={()=>this.cargarMas()}>Reset</button>
             
             </>
