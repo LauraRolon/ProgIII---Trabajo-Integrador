@@ -12,7 +12,10 @@ class Tarjetas extends Component {
             titulo: [],
             description: [],
             loader: false,
-            verMas: false
+            verMas: false,
+            peliculas: [],
+           
+            
         }
     }
 
@@ -25,6 +28,8 @@ class Tarjetas extends Component {
             this.setState({
                 loader: true,
                 peliculasOriginales: data.results,
+                
+                
             })
         })
         .catch(error => console.log(error))
@@ -49,7 +54,8 @@ class Tarjetas extends Component {
 
     }
 
-    verMas(){
+    verMas(e){
+        e.preventDefault()
         if (this.state.verMas){
             this.setState({
                 verMas: false
@@ -62,8 +68,17 @@ class Tarjetas extends Component {
         }
     }
 
-    agregarTarjeta(){
-
+    cargarMas(){
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c3dcc0e9ef8f3864ee4f5ed844d151f8&language=es-US`
+        fetch(url)
+            .then( response => response.json())
+            .then( data  => {
+                this.setState({
+                    peliculas: this.state.peliculasOriginales.concat(data.results),
+                    
+                })
+            })
+            .catch( err => console.log(err));
     }
 
     render(){
@@ -103,15 +118,16 @@ class Tarjetas extends Component {
                     key={pelicula.id} 
                     datosPelicula={pelicula} 
                     eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
-                    viewMore= {this.state.verMas}
+                    viewMore={this.state.verMas}
                     verMas={(e) => this.verMas(e)}
+
                     /> 
                 ))
             }
             
             
-            <button>Agregar más tarjetas</button>
-            <button>Reset</button>
+            <button onClick={()=>this.cargarMas()}>Ver más películas</button>
+            <button onClick={()=>this.cargarMas()}>Reset</button>
             
             </>
         );
