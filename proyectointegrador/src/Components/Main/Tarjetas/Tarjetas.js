@@ -61,9 +61,7 @@ class Tarjetas extends Component {
         if (this.state.verMas){
             this.setState({
                 verMas: false
-            })
-        
-            
+            })        
         }
         else {
             this.setState({
@@ -91,9 +89,31 @@ class Tarjetas extends Component {
         /* console.log("renderizado");
         console.log(this.state.peliculasOriginales) */
         return (
+            
             <> 
+                <header className="header">
+                    <section className="seccionHeader">
+                        <li className="logotipo">
+                            <img className="logo" src="./assets/img/image-default.png" alt="" />
+                        </li>
+                        <li className="titulosHeader">
+                            <a className="textoHeader">Inicio</a>
+                        </li>
+                        <li className="titulosHeader">
+                            <a className="textoHeader">Películas</a>
+                        </li>
+                        <li className="titulosHeader">
+                            <a className="textoHeader">Series</a>
+                        </li>
+                        <li className="titulosHeader">
+                            <FilterField buscarPelicula={(param) => this.filtrarPeliculas(param)} />
+                        </li>
+                    </section>
+                </header>
 
-            {
+            {   
+
+                
                 this.state.loader === false ?
                     <p>Cargando...</p> : 
                 

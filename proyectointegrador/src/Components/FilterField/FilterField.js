@@ -31,8 +31,7 @@ class FilterField extends Component{
                         value={this.state.filtrado}
                     />
                     <button className="botonSearch" type="submit"></button>
-                </div>
-                
+                </div>   
                     
             </form>
             </>
@@ -41,3 +40,4 @@ class FilterField extends Component{
 }
 
 export default FilterField
+
