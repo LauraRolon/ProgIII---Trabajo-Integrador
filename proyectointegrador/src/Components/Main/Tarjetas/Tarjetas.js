@@ -14,24 +14,25 @@ class Tarjetas extends Component {
             loader: false,
             verMas: false,
             peliculas: [],
+            page: 1
            
             
         }
     }
 
     componentDidMount() {
-        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c3dcc0e9ef8f3864ee4f5ed844d151f8&language=es-US`
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c3dcc0e9ef8f3864ee4f5ed844d151f8&language=es-US&page=${this.state.page}`
         fetch(url)
         .then(response => response.json())
         .then( (data) => {
             console.log(data);
             this.setState({
                 loader: true,
-                peliculasOriginales: data.results,
-                
-                
-            })
-        })
+                peliculas: data.results,
+                page: this.state.page + 1
+            },
+            )})
+       
         .catch(error => console.log(error))
     }
 
@@ -41,7 +42,8 @@ class Tarjetas extends Component {
         const restoPeliculas = this.state.peliculasOriginales.filter( pelicula => pelicula.id != id)
         this.setState({
             peliculasOriginales : restoPeliculas
-        })
+        }, )
+        
     }
 
     filtrarPeliculas(textoFiltrar){
@@ -71,21 +73,23 @@ class Tarjetas extends Component {
     }
 
     cargarMas(){
-        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c3dcc0e9ef8f3864ee4f5ed844d151f8&language=es-US`
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c3dcc0e9ef8f3864ee4f5ed844d151f8&language=es-US&page=${this.state.page}`
+        console.log('urlConsulta',url)
         fetch(url)
             .then( response => response.json())
             .then( data  => {
+                console.log(data)
                 this.setState({
-                    peliculas: this.state.peliculasOriginales.concat(data.results),
-                    
-                })
-            })
+                    peliculas: this.state.peliculas.concat(data.results),
+                    page: this.state.page + 1
+                },)})
+                
             .catch( err => console.log(err));
     }
 
     render(){
-        console.log("renderizado");
-        console.log(this.state.peliculasOriginales)
+        /* console.log("renderizado");
+        console.log(this.state.peliculasOriginales) */
         return (
             <> 
 
@@ -93,7 +97,7 @@ class Tarjetas extends Component {
                 this.state.loader === false ?
                     <p>Cargando...</p> : 
                 
-                    this.state.peliculasOriginales.map( (pelicula) => (
+                    this.state.peliculas.map( (pelicula) => (
                 <Pelicula 
                     key={pelicula.id} 
                     datosPelicula={pelicula} 
