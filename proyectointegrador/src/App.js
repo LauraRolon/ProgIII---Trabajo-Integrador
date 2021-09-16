@@ -1,6 +1,6 @@
 import Footer from "./Components/Footer/Footer";
-import MainContent from "./Components/Main/MainContent";
 import React, { Component } from "react";
+import MainContent from "./Components/Main/MainContent";
 
 class App extends Component{
   constructor(props){
