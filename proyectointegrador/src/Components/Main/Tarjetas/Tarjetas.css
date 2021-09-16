@@ -7,7 +7,7 @@
 
 .tarjeta {
     flex-basis: 20%;
-    height: 620px;
+    min-height: 620px;
     margin: 6.5px;
     background: #c7c7c7;
     border-radius: 27px;
@@ -31,7 +31,6 @@
     align-items: flex-start;
     justify-content: center;
     object-fit: cover;
-    height: 180px;
     padding: 10px;
 }
 
