@@ -14,6 +14,7 @@ class MainContent extends Component {
             description: [],
             loader: false,
             verMas: false,
+            texto: "Ver más",
             peliculas: [],
             page: 1,
             grilla: true
@@ -29,6 +30,7 @@ class MainContent extends Component {
             .then((data) => {
                 console.log(data);
                 this.setState({
+                    peliculasOriginales: data.results,
                     peliculas: data.results,
                     page: this.state.page + 1
                 },
@@ -58,16 +60,24 @@ class MainContent extends Component {
 
     }
 
+    cambiarTexto(){
+        this.setState({
+            texto: "Ver menos"
+        })
+    }
+
     verMas(e) {
         e.preventDefault()
         if (this.state.verMas) {
             this.setState({
-                verMas: false
+                verMas: false,
+                texto: "Ver más"
             })
         }
         else {
             this.setState({
-                verMas: true
+                verMas: true,
+                texto: "Ver menos"
             })
         }
     }
@@ -91,6 +101,13 @@ class MainContent extends Component {
             })
 
             .catch(err => console.log(err));
+    }
+
+    reset(){
+        console.log("Hola")
+        this.setState({
+            peliculas: this.state.peliculasOriginales
+        })
     }
 
     tiempo = setTimeout(() => this.setState({ loader: true }), 2000)
@@ -119,6 +136,7 @@ class MainContent extends Component {
                                             eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
                                             viewMore={this.state.verMas}
                                             verMas={(e) => this.verMas(e)}
+                                            textoBoton={this.state.texto}
 
                                         />
                                     
@@ -130,7 +148,7 @@ class MainContent extends Component {
 
                     <section className="sectionBotones">
                         <button className="botonesAdicionales" onClick={() => this.cargarMas()}>Ver más películas</button>
-                        <button className="botonesAdicionales" onClick={() => this.cargarMas()}>Reset</button>
+                        <button className="botonesAdicionales" onClick={() => this.reset()}>Reset</button>
                     </section>
                 </main>
 

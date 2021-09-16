@@ -35,7 +35,6 @@ class Header extends Component {
                     <li className="titulosHeader">
                         <a className="textoHeader">Series</a>
                     </li>
-                    <button className="vistaGrilla" onClick={()=>this.props.vistaGrilla()}>Cambiar vista</button>
                     
                     <li className="titulosHeader">
                         <form onSubmit={this.evitarSubmit}>
@@ -52,6 +51,9 @@ class Header extends Component {
 
                         </form>
                     </li>
+
+                    <button className="vistaGrilla" onClick={() => this.props.vistaGrilla()}>Cambiar vista</button>
+                    
                 </section>
             </header>
         )
