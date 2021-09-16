@@ -28,7 +28,7 @@ function Pelicula (props){
                 </section>
                 <section className="botones">
                     <a className="boton" onClick={(e)=> props.verMas(e)} href="">Ver más</a>
-                    <a className="boton" onClick={() => props.eliminar(id)}> Eliminar </a>
+                    <a className="boton" onClick={() => props.eliminar(id)} href=""> Eliminar </a>
                 </section>
 
             </main>

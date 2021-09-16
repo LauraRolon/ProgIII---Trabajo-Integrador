@@ -37,7 +37,7 @@ class Header extends Component {
                     </li>
                     <li className="titulosHeader">
                         <form onSubmit={this.evitarSubmit}>
-                            <div>
+                            <div className="searchSpace">
                                 <input
                                     className="divInput"
                                     placeholder="Buscar..."

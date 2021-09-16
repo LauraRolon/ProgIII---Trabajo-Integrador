@@ -3,6 +3,7 @@ import './Tarjetas.css';
 import Pelicula from '../../Pelicula/Pelicula';
 import Header from '../../Header/Header';
 
+let tiempo;
 class Tarjetas extends Component {
     constructor(props){
         super(props);
@@ -27,7 +28,6 @@ class Tarjetas extends Component {
         .then( (data) => {
             console.log(data);
             this.setState({
-                loader: true,
                 peliculas: data.results,
                 page: this.state.page + 1
             },
@@ -85,6 +85,8 @@ class Tarjetas extends Component {
             .catch( err => console.log(err));
     }
 
+    tiempo = setTimeout( () => this.setState({ loader: true }), 2000)
+
     render(){
         console.log(this.state.peliculas);
         return (
@@ -96,21 +98,26 @@ class Tarjetas extends Component {
                 this.state.loader === false ?
                     <p>Cargando...</p> : 
                 
-                    this.state.peliculas.map( (pelicula) => (
-                <Pelicula 
-                    key={pelicula.id} 
-                    datosPelicula={pelicula} 
-                    eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
-                    viewMore={this.state.verMas}
-                    verMas={(e) => this.verMas(e)}
+                this.state.peliculas.map( (pelicula) => (
+                <>
+                    <Pelicula 
+                        key={pelicula.id} 
+                        datosPelicula={pelicula} 
+                        eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
+                        viewMore={this.state.verMas}
+                        verMas={(e) => this.verMas(e)}
 
-                    /> 
+                    />
+                    
+                </>
                 ))
             }
             
+            <section className="sectionBotones">
+                <button className="botonesAdicionales" onClick={()=>this.cargarMas()}>Ver más películas</button>
+                <button className="botonesAdicionales" onClick={()=>this.cargarMas()}>Reset</button>
+            </section>
             
-            <button onClick={()=>this.cargarMas()}>Ver más películas</button>
-            <button onClick={()=>this.cargarMas()}>Reset</button>
             
             </>
         );
