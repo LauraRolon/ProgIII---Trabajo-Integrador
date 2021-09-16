@@ -1,15 +1,15 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import './header.css'
 
 class Header extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             filtardo: "",
         }
     }
 
-    evitarSubmit(evt){
+    evitarSubmit(evt) {
         evt.preventDefault();
     }
 
@@ -19,8 +19,8 @@ class Header extends Component {
         }, () => this.props.buscarPelicula(this.state.filtrado));
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <header className="header">
                 <section className="seccionHeader">
                     <li className="logotipo">
@@ -35,6 +35,8 @@ class Header extends Component {
                     <li className="titulosHeader">
                         <a className="textoHeader">Series</a>
                     </li>
+                    <button className="vistaGrilla" onClick={()=>this.props.vistaGrilla()}>Cambiar vista</button>
+                    
                     <li className="titulosHeader">
                         <form onSubmit={this.evitarSubmit}>
                             <div className="searchSpace">
