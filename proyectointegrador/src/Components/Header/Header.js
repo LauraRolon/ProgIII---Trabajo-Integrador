@@ -5,7 +5,7 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filtardo: "",
+            filtrado: "",
         }
     }
 
@@ -15,8 +15,10 @@ class Header extends Component {
 
     controlCambios(evt) {
         this.setState({
-            filtrado: evt.target.value
+            filtrado: evt.target.value,
         }, () => this.props.buscarPelicula(this.state.filtrado));
+        ;
+        
     }
 
     render() {

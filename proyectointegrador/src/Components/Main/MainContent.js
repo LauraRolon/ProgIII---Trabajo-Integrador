@@ -17,8 +17,8 @@ class MainContent extends Component {
             texto: "Ver más",
             peliculas: [],
             page: 1,
-            grilla: true
-
+            grilla: true,
+            peliculasActuales: []
 
         }
     }
@@ -33,7 +33,7 @@ class MainContent extends Component {
                     peliculasOriginales: data.results,
                     peliculas: data.results,
                     page: this.state.page + 1
-                },
+                }, () => this.setState({peliculasActuales: this.state.peliculas})
                 )
             })
 
@@ -51,13 +51,14 @@ class MainContent extends Component {
     }
 
     filtrarPeliculas(textoFiltrar) {
-        let peliculasFiltradas = this.state.peliculas.filter(pelicula =>
+        let peliculasFiltradas = this.state.peliculasActuales.filter(pelicula =>
             pelicula.title.toLowerCase().includes(textoFiltrar.toLowerCase())
         );
-        this.setState({
-            peliculas: peliculasFiltradas
-        })
 
+        this.setState({ 
+            peliculas: peliculasFiltradas 
+        })
+        
     }
 
     cambiarTexto(){
@@ -97,7 +98,7 @@ class MainContent extends Component {
                 this.setState({
                     peliculas: this.state.peliculas.concat(data.results),
                     page: this.state.page + 1
-                })
+                }, () => this.setState({ peliculasActuales: this.state.peliculas}))
             })
 
             .catch(err => console.log(err));
@@ -123,25 +124,23 @@ class MainContent extends Component {
                         vistaGrilla= {() => this.vistaGrilla()}
                     />
 
+                    { this.state.peliculas == "" ? <p className="aviso">No hay resultados para su búsqueda</p> : ""}
+                    
                     {
                         this.state.loader === false ?
                             <p>Cargando...</p> :
 
                             this.state.peliculas.map((pelicula) => (
                                 <>
-                                    
-                                        <Pelicula
-                                            key={pelicula.id}
-                                            datosPelicula={pelicula}
-                                            eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
-                                            viewMore={this.state.verMas}
-                                            verMas={(e) => this.verMas(e)}
-                                            textoBoton={this.state.texto}
+                                    <Pelicula
+                                        key={pelicula.id}
+                                        datosPelicula={pelicula}
+                                        eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
+                                        viewMore={this.state.verMas}
+                                        verMas={(e) => this.verMas(e)}
+                                        textoBoton={this.state.texto}
 
-                                        />
-                                    
-                    
- 
+                                    />
                                 </>
                             ))
                     }
