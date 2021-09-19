@@ -20,6 +20,7 @@ class MainContent extends Component {
 
 
         }
+        this.eliminarTarjeta = this.eliminarTarjeta.bind(this)
     }
 
     componentDidMount() {
@@ -39,8 +40,8 @@ class MainContent extends Component {
     }
 
 
-    eliminarTarjeta(id) {
-        console.log(id);
+    eliminarTarjeta(e,id) {
+        e.preventDefault()
         const restoPeliculas = this.state.peliculas.filter(pelicula => pelicula.id != id)
         this.setState({
             peliculas: restoPeliculas
@@ -58,23 +59,10 @@ class MainContent extends Component {
 
     }
 
-    verMas(e) {
-        e.preventDefault()
-        if (this.state.verMas) {
-            this.setState({
-                verMas: false
-            })
-        }
-        else {
-            this.setState({
-                verMas: true
-            })
-        }
-    }
 
     vistaGrilla() {
-         this.setState({grilla: !this.state.grilla})
-        console.log(this.state.grilla)
+         this.setState({grilla: !this.state.grilla}) //el estado que era antes se actualiza. pido que se setee a un objeto que era grilla aalgo que no sea grilla, lo niego
+        console.log(this.state.grilla) 
     }
  
     cargarMas() {
@@ -116,9 +104,10 @@ class MainContent extends Component {
                                         <Pelicula
                                             key={pelicula.id}
                                             datosPelicula={pelicula}
-                                            eliminar={(peliculaEliminar) => this.eliminarTarjeta(peliculaEliminar)}
+                                            eliminar={this.eliminarTarjeta} 
                                             viewMore={this.state.verMas}
                                             verMas={(e) => this.verMas(e)}
+                                            grilla={this.state.grilla}
 
                                         />
                                     

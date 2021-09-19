@@ -6,7 +6,7 @@
     align-items: flex-start;
 }
 
-.containerMainLsita {
+.containerMainLista {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -27,6 +27,19 @@
     margin: 6.5px;
     background: #c7c7c7;
     border-radius: 27px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* overflow: hidden; */
+    
+}
+
+.lista {
+    flex-basis: 20%;
+    min-height: 620px;
+    margin: 6.5px;
+    background: #c05252;
+    border-radius: 25px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

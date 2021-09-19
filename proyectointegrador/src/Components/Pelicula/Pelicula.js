@@ -1,10 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
 
-function Pelicula (props){
-    const {backdrop_path, title, overview, release_date, original_title, popularity, id} = props.datosPelicula
-    return(
-        <>
-            <main className="tarjeta">
+ class Pelicula extends Component {
+    constructor(props) {
+        super(props); 
+        this.state = {
+            verMas: false,
+
+
+        }
+    }
+
+    verMas(e) {
+        e.preventDefault()
+        if (this.state.verMas) {
+            this.setState({
+                verMas: false
+            })
+        }
+        else {
+            this.setState({
+                verMas: true
+            })
+        }
+    }
+
+    
+
+    render(){
+        const {backdrop_path, title, overview, release_date, original_title, popularity, id} = this.props.datosPelicula
+        const {grilla} = this.props
+        console.log(this.props.datosPelicula)
+        return(
+            <>
+            <main className={grilla?'tarjeta':'lista'}>
                 <section class="navigation">
                     <div>
                         <i class="fas fa-chevron-left"></i>
@@ -21,19 +49,22 @@ function Pelicula (props){
                     <p className="description">{overview}</p>
                 </div>
                 
-                <section className={props.viewMore?'':'aditional-info'}>
+                <section className={this.state.verMas?'vermas':'aditional-info'}>
                     <p className="tarjeta-info">Fecha de lanzamiento: {release_date}</p>
                     <p className="tarjeta-info">Título original: {original_title}</p>
                     <p className="tarjeta-info">Popularidad: {popularity}</p>
                 </section>
                 <section className="botones">
-                    <a className="boton" onClick={(e)=> props.verMas(e)} href="">Ver más</a>
-                    <a className="boton" onClick={() => props.eliminar(id)} href=""> Eliminar </a>
+                    <a className="boton" onClick={(e)=> this.verMas(e)} href="">Ver más</a>
+                    <a className="boton" onClick={(e) => this.props.eliminar(e,id)} href=""> Eliminar </a>
                 </section>
 
             </main>
         </>
-    )
-}
+        );
+
+    };
+} 
 
 export default Pelicula
+
