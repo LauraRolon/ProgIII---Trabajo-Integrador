@@ -14,10 +14,11 @@ class MainContent extends Component {
             description: [],
             loader: false,
             verMas: false,
+            texto: "Ver más",
             peliculas: [],
             page: 1,
-            grilla: true
-
+            grilla: true,
+            peliculasActuales: []
 
         }
         this.eliminarTarjeta = this.eliminarTarjeta.bind(this)
@@ -30,9 +31,10 @@ class MainContent extends Component {
             .then((data) => {
                 console.log(data);
                 this.setState({
+                    peliculasOriginales: data.results,
                     peliculas: data.results,
                     page: this.state.page + 1
-                },
+                }, () => this.setState({peliculasActuales: this.state.peliculas})
                 )
             })
 
@@ -50,13 +52,20 @@ class MainContent extends Component {
     }
 
     filtrarPeliculas(textoFiltrar) {
-        let peliculasFiltradas = this.state.peliculas.filter(pelicula =>
+        let peliculasFiltradas = this.state.peliculasActuales.filter(pelicula =>
             pelicula.title.toLowerCase().includes(textoFiltrar.toLowerCase())
         );
-        this.setState({
-            peliculas: peliculasFiltradas
-        })
 
+        this.setState({ 
+            peliculas: peliculasFiltradas 
+        })
+        
+    }
+
+    cambiarTexto(){
+        this.setState({
+            texto: "Ver menos"
+        })
     }
 
 
@@ -75,10 +84,17 @@ class MainContent extends Component {
                 this.setState({
                     peliculas: this.state.peliculas.concat(data.results),
                     page: this.state.page + 1
-                })
+                }, () => this.setState({ peliculasActuales: this.state.peliculas}))
             })
 
             .catch(err => console.log(err));
+    }
+
+    reset(){
+        console.log("Hola")
+        this.setState({
+            peliculas: this.state.peliculasOriginales
+        })
     }
 
     tiempo = setTimeout(() => this.setState({ loader: true }), 2000)
@@ -94,6 +110,8 @@ class MainContent extends Component {
                         vistaGrilla= {() => this.vistaGrilla()}
                     />
 
+                    { this.state.peliculas == "" ? <p className="aviso">No hay resultados para su búsqueda</p> : ""}
+                    
                     {
                         this.state.loader === false ?
                             <p>Cargando...</p> :
@@ -119,7 +137,7 @@ class MainContent extends Component {
 
                     <section className="sectionBotones">
                         <button className="botonesAdicionales" onClick={() => this.cargarMas()}>Ver más películas</button>
-                        <button className="botonesAdicionales" onClick={() => this.cargarMas()}>Reset</button>
+                        <button className="botonesAdicionales" onClick={() => this.reset()}>Reset</button>
                     </section>
                 </main>
 
