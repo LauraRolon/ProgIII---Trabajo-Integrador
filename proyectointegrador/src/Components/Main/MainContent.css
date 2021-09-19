@@ -36,13 +36,13 @@
 
 .lista {
     flex-basis: 20%;
-    min-height: 620px;
+    min-height: 100px;
     margin: 6.5px;
-    background: #c05252;
+    background: #c7c7c7;
     border-radius: 25px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    
     /* overflow: hidden; */
     
 }
@@ -55,6 +55,14 @@
 
 }
 
+.imagenLista {
+    border-radius: 25px;
+    padding: 10px;
+    height: 192px;
+    
+
+}
+
 .overview{
     display: flex;
     align-items: flex-start;
@@ -63,6 +71,16 @@
     height: 180px;
     padding: 10px;
 }
+
+.overviewLista{
+    min-height: 10px;
+    padding-left: 360px;
+    margin-right: 20px;
+    
+    
+}
+
+
 
 .description {
     display: flex;
@@ -75,6 +93,21 @@
     color: #000000;
     text-align: justify;
     margin: 0px;
+}
+
+.descriptionLista{
+    display: flex;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    text-align: justify;
+    margin: 0px;
+    
+    
 }
 
 .tarjeta-info{
@@ -113,6 +146,16 @@ color: #000000;
 }
 
 .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 30px;
+    object-fit: cover;
+    position: static;
+}
+
+.titleLista{
     display: flex;
     justify-content: center;
     align-items: center;

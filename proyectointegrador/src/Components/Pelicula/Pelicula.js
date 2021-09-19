@@ -40,13 +40,13 @@ import React, { Component } from "react";
                     </div>
                     <i class="far fa-window-close"></i>
                 </section>
-                <img className="imagen" src={`https://image.tmdb.org/t/p/w342/${backdrop_path}`} alt="" />
-                <div className="title">
+                <img className={grilla?'imagen':'imagenLista'} src={`https://image.tmdb.org/t/p/w342/${backdrop_path}`} alt="" />
+                <div className={grilla?'title':'titleLista'}>
                     <h3 className="titulo">{title}</h3>
                 </div>
                 
-                <div className="overview">
-                    <p className="description">{overview}</p>
+                <div className={grilla?'overview':'overviewLista'}>
+                    <p className={grilla?'description':'descriptionLista'}>{overview}</p>
                 </div>
                 
                 <section className={this.state.verMas?'vermas':'aditional-info'}>
