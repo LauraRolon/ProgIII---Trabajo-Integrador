@@ -29,7 +29,6 @@ class MainContent extends Component {
         fetch(url)
             .then(response => response.json())
             .then((data) => {
-                console.log(data);
                 this.setState({
                     peliculasOriginales: data.results,
                     peliculas: data.results,
@@ -48,7 +47,6 @@ class MainContent extends Component {
         this.setState({
             peliculas: restoPeliculas
         })
-
     }
 
     filtrarPeliculas(textoFiltrar) {
@@ -58,8 +56,7 @@ class MainContent extends Component {
 
         this.setState({ 
             peliculas: peliculasFiltradas 
-        })
-        
+        })    
     }
 
     cambiarTexto(){
@@ -70,17 +67,14 @@ class MainContent extends Component {
 
 
     vistaGrilla() {
-         this.setState({grilla: !this.state.grilla}) //el estado que era antes se actualiza. pido que se setee a un objeto que era grilla aalgo que no sea grilla, lo niego
-        console.log(this.state.grilla) 
+        this.setState({grilla: !this.state.grilla}) 
     }
  
     cargarMas() {
         const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=c3dcc0e9ef8f3864ee4f5ed844d151f8&language=es-US&page=${this.state.page}`
-        console.log('urlConsulta', url)
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                //console.log(data)
                 this.setState({
                     peliculas: this.state.peliculas.concat(data.results),
                     page: this.state.page + 1
@@ -91,7 +85,6 @@ class MainContent extends Component {
     }
 
     reset(){
-        console.log("Hola")
         this.setState({
             peliculas: this.state.peliculasOriginales
         })
@@ -100,7 +93,6 @@ class MainContent extends Component {
     tiempo = setTimeout(() => this.setState({ loader: true }), 2000)
 
     render() {
-        console.log(this.state.peliculas);
         return (
 
             <>
@@ -119,18 +111,15 @@ class MainContent extends Component {
                             this.state.peliculas.map((pelicula) => (
                                 <>
                                     
-                                        <Pelicula
-                                            key={pelicula.id}
-                                            datosPelicula={pelicula}
-                                            eliminar={this.eliminarTarjeta} 
-                                            viewMore={this.state.verMas}
-                                            verMas={(e) => this.verMas(e)}
-                                            grilla={this.state.grilla}
-
-                                        />
+                                    <Pelicula
+                                        key={pelicula.id}
+                                        datosPelicula={pelicula}
+                                        eliminar={this.eliminarTarjeta} 
+                                        viewMore={this.state.verMas}
+                                        verMas={(e) => this.verMas(e)}
+                                        grilla={this.state.grilla}
+                                    />
                                     
-                    
- 
                                 </>
                             ))
                     }

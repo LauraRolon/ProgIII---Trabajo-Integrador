@@ -4,9 +4,7 @@ import React, { Component } from "react";
     constructor(props) {
         super(props); 
         this.state = {
-            verMas: false,
-
-
+            verMas: false
         }
     }
 
@@ -22,14 +20,11 @@ import React, { Component } from "react";
                 verMas: true
             })
         }
-    }
-
-    
+    }   
 
     render(){
         const {backdrop_path, title, overview, release_date, original_title, popularity, id} = this.props.datosPelicula
         const {grilla} = this.props
-        console.log(this.props.datosPelicula)
         return(
             <>
             <main className={grilla?'tarjeta':'lista'}>

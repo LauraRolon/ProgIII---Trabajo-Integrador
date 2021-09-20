@@ -30,8 +30,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* overflow: hidden; */
-    
 }
 
 .lista {
@@ -42,9 +40,6 @@
     border-radius: 25px;
     display: flex;
     flex-wrap: wrap;
-    
-    /* overflow: hidden; */
-    
 }
 
 .imagen {
@@ -52,15 +47,12 @@
     padding: 10px;
     height: 192px;
     object-fit: cover;
-
 }
 
 .imagenLista {
     border-radius: 25px;
     padding: 10px;
     height: 192px;
-    
-
 }
 
 .overview{
@@ -75,12 +67,8 @@
 .overviewLista{
     min-height: 10px;
     padding-left: 360px;
-    margin-right: 20px;
-    
-    
+    margin-right: 20px;  
 }
-
-
 
 .description {
     display: flex;
@@ -105,9 +93,7 @@
     line-height: 16px;
     color: #000000;
     text-align: justify;
-    margin: 0px;
-    
-    
+    margin: 0px;     
 }
 
 .tarjeta-info{
@@ -124,7 +110,6 @@ color: #000000;
     display: none;
 }
 
-
 .boton {
     background-color: rgb(24, 24, 24);
     color: white;
@@ -136,7 +121,6 @@ color: #000000;
     text-decoration: none;
     width: 80px;
     height: 20px;
-
 }
 
 .botones{
@@ -192,7 +176,3 @@ color: #000000;
     font-family: verdana;
     font-size: 15px;
 }
-
-
-/**/
-
